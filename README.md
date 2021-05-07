@@ -1,24 +1,57 @@
-# README
+## User テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|  Column            |  Type               |  Options          |
+| ------------------ | ------------------- | ----------------- |
+| name               | string              | null: false       |
+| email              | string              | null: false       |
+| password           | string              | null: false       |
 
-Things you may want to cover:
+### Association
+- has_many :pets
 
-* Ruby version
+## Pet テーブル
 
-* System dependencies
+|  Column            |  Type            |  Options                         |
+| ------------------ | ---------------- | -------------------------------- |
+| name               | string           | null: false                      |
+| sex                | string           | null: false                      |
+| type               | string           | null: false                      |
+| birthday           | date             | null: false                      |
+| color              | string           | null: false                      |
+| hospital           | text             | null: false                      |
+| medical_history    | text             | null: false                      |
+| medicine           | text             | null: false                      |
+| allergies          | text             | null: false                      |
+| walk_time          | string           |                                  |
+| trimming           | string           |                                  |
+| character          | text             |                                  |
+| type_of_foods      | string           |                                  |
+| number_of_meals    | string           |                                  |
+| amount_of_food     | string           |                                  |
+| image              | references       | null: false, foreign_key: true   |
+| user               | references       | null: false, foreign_key: true   |
 
-* Configuration
+### Association
+- belongs_to :user
+- belongs_to :diary
+- belongs_to :grow
 
-* Database creation
+## Diary テーブル
 
-* Database initialization
+|  Column            |  Type               |  Options                        |
+| ------------------ | ------------------- | ------------------------------- |
+| date               | date                | null: false                     |
+| text               | text                | null: false                     |
+| image              | references          | null: false, foreign_key: true  |
 
-* How to run the test suite
+### Association
+- belongs_to :pet
 
-* Services (job queues, cache servers, search engines, etc.)
+## Grow テーブル
 
-* Deployment instructions
-
-* ...
+|  Column            |  Type               |  Options           |
+| ------------------ | ------------------- | ------------------ |
+| height             | string              | null: false        |
+| weight             | string              | null: false        |
+### Association
+- belongs_to :pet
